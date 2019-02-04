@@ -6,9 +6,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(131, 131, 247);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form buttun, form h5 {
+  margin: 20px 0;
 }
