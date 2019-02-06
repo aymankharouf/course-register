@@ -1,6 +1,6 @@
-import React, { Component} from 'react'
+import React from 'react'
 
-class SignIn extends Component {
+class SignIn extends React.Component {
   state = {
     email: '',
     password: ''
