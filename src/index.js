@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
+//store.dispatch(getProjects())
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

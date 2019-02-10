@@ -38,10 +38,10 @@ class CreateProject extends React.Component {
     )
   }
 }
-const mapDispatchToProps = (dispatch) => {
+const mapActionsToProps = (dispatch) => {
   return {
     createProject: (project) => dispatch(createProject(project))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateProject)
+export default connect(null, mapActionsToProps)(CreateProject)
