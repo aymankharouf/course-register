@@ -1,13 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const ProjectDetails = (props) => {
-  const id = props.match.params.id
   return (
     <div className="container section project-details">
       <div className="card z-depth-0">
         <div className="card-content">
-          <span className="card-title">Project Title - {id}</span>
-          <p>asalkfdslkfslkgvlm  kdfgmldkxgnmvlkdn </p>
+          <span className="card-title">{props.project[0] && props.project[0].title}</span>
+          <p>{props.project[0] && props.project[0].content}</p>
         </div>
         <div className="card-action grey lighten-4 grey-text">
           <div>Posted By Ayman</div>
@@ -17,5 +17,17 @@ const ProjectDetails = (props) => {
     </div>
   )
 }
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id
+  return {
+    project: state.project.filter(project => project.id === id)
+  }
+}
+const mapActionsToProps = dispatch => {
+  return {
+    getProject: (id) => dispatch(null)
+  }
+}
 
-export default ProjectDetails
+
+export default connect(mapStateToProps, mapActionsToProps)(ProjectDetails)

@@ -2,6 +2,7 @@ import React from 'react'
 import ProjectSummary from './ProjectSummary'
 import { connect } from 'react-redux'
 import { getProjects } from '../../store/actions/projectActions'
+import { Link } from 'react-router-dom'
 
 class ProjectList extends React.Component {
   componentDidMount() {
@@ -10,7 +11,12 @@ class ProjectList extends React.Component {
     }
   }
   render() {
-    const projectsList = this.props.projects.map(project => <ProjectSummary project={project} key={project.id}/>)
+    const projectsList = this.props.projects.map(project => {
+    return (
+      <Link to={'/project/' + project.id} key={project.id}>
+        <ProjectSummary project={project}/>)
+      </Link>
+    )})
     return (
       <div className="project-list section">
         {projectsList}
