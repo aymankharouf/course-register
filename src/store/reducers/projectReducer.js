@@ -1,14 +1,13 @@
 const projectReducer = (state = [], action) => {
   switch (action.type){
-    case 'CREATE_PROJECT':
-      return [...state, action.project]
+    case 'ADD_PROJECT':
+      const project = {id:action.change.doc.id, ...action.change.doc.data()}
+      return [...state, project]
+    case 'DELETE_PROJECT':
+      const newState = state.filter(id => id !== action.change.doc.id)
+      return newState
     case 'CREATE_PROJECT_ERROR':
       console.log('created project error', action.err)
-      break;
-    case 'GET_PROJECTS':
-      return action.projects
-    case 'GET_PROJECTS_ERROR':
-      console.log('get project err', action.err)
       break;
     default:
       return state

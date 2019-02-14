@@ -1,15 +1,9 @@
 import React from 'react'
 import ProjectSummary from './ProjectSummary'
 import { connect } from 'react-redux'
-import { getProjects } from '../../store/actions/projectActions'
 import { Link } from 'react-router-dom'
 
 class ProjectList extends React.Component {
-  componentDidMount() {
-    if (!this.props.projects.length) {
-      this.props.getProjects()
-    }
-  }
   render() {
     const projectsList = this.props.projects.map(project => {
     return (
@@ -29,9 +23,5 @@ const mapStateToProps = state => {
     projects: state.project
   }
 }
-const mapActionsToProps = dispatch => {
-  return {
-    getProjects: () => dispatch(getProjects())
-  }
-}
-export default connect(mapStateToProps, mapActionsToProps)(ProjectList)
+
+export default connect(mapStateToProps)(ProjectList)
