@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 const ProjectDetails = (props) => {
   return (
@@ -10,8 +11,8 @@ const ProjectDetails = (props) => {
           <p>{props.project[0] && props.project[0].content}</p>
         </div>
         <div className="card-action grey lighten-4 grey-text">
-          <div>Posted By Ayman</div>
-          <div>2nd September, 2019</div>
+          <div>Posted By {props.project[0].authorFirstName} {props.project[0].authorLastName}</div>
+          <div>{moment(props.project[0].createdAt.toDate()).calendar()}</div>
         </div>
       </div>
     </div>
@@ -23,11 +24,5 @@ const mapStateToProps = (state, ownProps) => {
     project: state.project.filter(project => project.id === id)
   }
 }
-const mapActionsToProps = dispatch => {
-  return {
-    getProject: (id) => dispatch(null)
-  }
-}
 
-
-export default connect(mapStateToProps, mapActionsToProps)(ProjectDetails)
+export default connect(mapStateToProps)(ProjectDetails)

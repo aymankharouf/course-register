@@ -1,20 +1,24 @@
 import React from 'react'
+import { login } from '../../store/actions/authActions'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class SignIn extends React.Component {
   state = {
     email: '',
     password: ''
   }
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
-      [e.target.id]: [e.target.value]
+      [e.target.id]: e.target.value
     })
   }
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
+    this.props.login(this.state)
   }
   render() {
+    if (this.props.uid) return (<Redirect to='/'/>)
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -29,11 +33,24 @@ class SignIn extends React.Component {
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <div className="center red-text">
+              { this.props.authError ? <p>{this.props.authError}</p> : null }
+            </div>
           </div>
         </form>
       </div>
     )
   }
 }
-
-export default SignIn
+const mapStateToProps = (state) => {
+  return {
+    uid: state.auth.uid,
+    authError: state.auth.authError
+  }
+}
+const mapActionsToProps = (dispatch) => {
+  return {
+    login: (user) => dispatch(login(user))
+  }
+}
+export default connect(mapStateToProps, mapActionsToProps)(SignIn)

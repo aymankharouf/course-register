@@ -8,12 +8,12 @@ class CreateProject extends React.Component {
     title: '',
     content: ''
   }
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
-      [e.target.id]: [e.target.value]
+      [e.target.id]: e.target.value
     })
   }
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault()
     this.props.createProject(this.state)
     this.props.history.push('/')
