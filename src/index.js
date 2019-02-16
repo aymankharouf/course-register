@@ -27,14 +27,27 @@ auth.onAuthStateChanged(user => {
     })
     
     db.collection('projects').onSnapshot(snapshot => {
-      let changes = snapshot.docChanges()
-      changes.forEach(change => {
+      snapshot.docChanges().forEach(change => {
         switch (change.type) {
           case 'added':
             store.dispatch({type: 'ADD_PROJECT', change})
             break
           case 'removed':
             store.dispatch({type: 'DELETE_PROJECT', change})
+            break
+          default:
+            console.log('uncatched type')
+        }
+      })
+    }, err => console.log(err.message))
+    db.collection('notifications').orderBy('time', 'desc').limit(3).onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        switch (change.type) {
+          case 'added':
+            store.dispatch({type: 'ADD_NOTIFICATION', change})
+            break
+          case 'removed':
+            store.dispatch({type: 'DELETE_NOTIFICATION', change})
             break
           default:
             console.log('uncatched type')
