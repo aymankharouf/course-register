@@ -1,6 +1,7 @@
 import { auth, db } from '../../db/firebase'
 export const login = (user) => {
   return (dispatch) => {
+    console.log('user =', user)
     auth.signInWithEmailAndPassword(user.email, user.password)
       .catch(err => dispatch({type: 'LOGIN_ERROR', err}))
   }
