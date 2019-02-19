@@ -15,27 +15,15 @@ const createNotification = notification => {
     .then(doc => console.log('notification added', doc))
 }
 
-exports.projectCreated = functions.firestore.document('projects/{projectId}')
+exports.studentRegister = functions.firestore.document('students/{studentId}')
   .onCreate(doc => {
-    const project = doc.data()
+    const student = doc.data()
     const now = admin.firestore.Timestamp.now()
     const notification = {
-			content: "new project added",
-			user: `${project.authorFirstName} ${project.authorLastName}`,
+			content: "new student registered",
+			student: `${student.name} ${student.email}`,
 			time: now
     }
     createNotification(notification)
   })
 
-  exports.userSignUp = functions.auth.user().onCreate(user => {
-    return admin.firestore().collection('users').doc(user.uid).get().then(doc => {
-      const newUser = doc.data()
-      const now = admin.firestore.Timestamp.now()
-      const notification = {
-			  content: "new user signed up",
-			  user: `${newUser.firstName} ${newUser.lastName}`,
-			  time: now
-      }
-      createNotification(notification)
-    })
-  })

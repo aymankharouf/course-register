@@ -5,11 +5,10 @@ import { logout } from '../../store/actions/authActions'
 
 const SignedInLinks = (props) => {
   return (
-    <ul className="right">
-      <li><NavLink to='/create'>New Project</NavLink></li>
-      <li><a href="" onClick={props.logout}>Log Out</a></li>
-      <li><NavLink to='/' className="btn btn-floating pink lighten-1">{ props.initials }</NavLink></li>
-    </ul>
+    <React.Fragment>
+      <li><a href="#" onClick={props.logout}>Log Out</a></li>
+      <li><NavLink to='/profile' className="btn btn-floating pink lighten-1">{ props.initials }</NavLink></li>
+    </React.Fragment>
   )
 }
 const mapStateToProps = (state) => {

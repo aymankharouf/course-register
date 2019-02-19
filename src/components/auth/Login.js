@@ -3,7 +3,7 @@ import { login } from '../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-class SignIn extends React.Component {
+class Login extends React.Component {
   state = {
     email: '',
     password: ''
@@ -18,11 +18,11 @@ class SignIn extends React.Component {
     this.props.login(this.state)
   }
   render() {
-    if (this.props.uid) return (<Redirect to='/'/>)
+    if (this.props.uid) return (<Redirect to='/dashboard'/>)
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Sign In</h5>
+          <h5 className="grey-text text-darken-3">Login</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" onChange={this.handleChange}/>
@@ -53,4 +53,4 @@ const mapActionsToProps = (dispatch) => {
     login: (user) => dispatch(login(user))
   }
 }
-export default connect(mapStateToProps, mapActionsToProps)(SignIn)
+export default connect(mapStateToProps, mapActionsToProps)(Login)

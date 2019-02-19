@@ -26,14 +26,14 @@ auth.onAuthStateChanged(user => {
       }
     })
     
-    db.collection('projects').onSnapshot(snapshot => {
+    db.collection('students').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
         switch (change.type) {
           case 'added':
-            store.dispatch({type: 'ADD_PROJECT', change})
+            store.dispatch({type: 'REGISTER', change})
             break
           case 'removed':
-            store.dispatch({type: 'DELETE_PROJECT', change})
+            store.dispatch({type: 'UNREGISTER', change})
             break
           default:
             console.log('uncatched type')

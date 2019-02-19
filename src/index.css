@@ -6,19 +6,44 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(131, 131, 247);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.materialboxed {
+  cursor: pointer !important;
+  max-height: 150px;
+  min-height: 150px;
+  margin: 20px auto;
 }
 
-form {
-  padding: 20px;
-  margin-top: 60px;
+
+.app-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
 }
 
-form buttun, form h5 {
-  margin: 20px 0;
+.app-header {
+  background-color: black;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.parallax-container {
+  height: 200px !important;
 }
