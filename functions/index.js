@@ -20,10 +20,10 @@ exports.studentRegister = functions.firestore.document('students/{studentId}')
     const student = doc.data()
     const now = admin.firestore.Timestamp.now()
     const notification = {
-			content: "new student registered",
-			student: `${student.name} ${student.email}`,
-			time: now
+      content: "new student registered",
+      student: `${student.name} ${student.email}`,
+      time: now
     }
-    createNotification(notification)
+    return createNotification(notification)    
   })
 

@@ -34,7 +34,7 @@ class Login extends React.Component {
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Login</button>
             <div className="center red-text">
-              { this.props.authError ? <p>{this.props.authError}</p> : null }
+              { this.props.error ? <p>{this.props.error}</p> : null }
             </div>
           </div>
         </form>
@@ -42,15 +42,15 @@ class Login extends React.Component {
     )
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     uid: state.auth.uid,
-    authError: state.auth.authError
+    error: state.auth.error
   }
 }
-const mapActionsToProps = (dispatch) => {
+const mapActionsToProps = dispatch => {
   return {
-    login: (user) => dispatch(login(user))
+    login: user => dispatch(login(user))
   }
 }
 export default connect(mapStateToProps, mapActionsToProps)(Login)

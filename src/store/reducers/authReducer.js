@@ -5,40 +5,21 @@ const authReducer = (state = {}, action) => {
       return {
         ...state,
         uid: '',
-        firstName: '',
-        lastName: '',
-        initials: '',
-      authError: action.err.message
-      }
-    case 'SIGNUP_ERROR':
-      console.log('signup failed', action.err.message)
-      return {
-        ...state,
-        uid: '',
-        firstName: '',
-        lastName: '',
-        initials: '',
-      authError: action.err.message
+        error: action.err.message
       }
     case 'RESTORE_UID':
       console.log('restore uid')
-      if (action.profile) {
+      if (action.user) {
         return {
           ...state,
-          uid: action.profile.uid,
-          firstName: action.profile.firstName,
-          lastName: action.profile.lastName,
-          initials: action.profile.initials,
-          authError: ''
+          uid: action.user.uid,
+          error: ''
         }
       } else {
         return {
           ...state,
           uid: '',
-          firstName: '',
-          lastName: '',
-          initials: '',
-          authError: ''
+          error: ''
       }
     }
     default:

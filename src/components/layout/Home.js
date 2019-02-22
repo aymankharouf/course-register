@@ -70,9 +70,9 @@ const Home = props => {
             <div className="col s12 l4 offset-l2">
               <h5>Connect</h5>
               <ul>
-                <li><a href="#" className="grey-text text-lighten-3">Facebook</a></li>
-                <li><a href="#" className="grey-text text-lighten-3">Twitter</a></li>
-                <li><a href="#" className="grey-text text-lighten-3">LinkedIn</a></li>
+                <li><a href="https://www.linkedin.com/in/aymankharouf" className="grey-text text-lighten-3">LinkedIn</a></li>
+                <li><a href="https://twitter.com/aymankharouf" className="grey-text text-lighten-3">Twitter</a></li>
+                <li><a href="https://github.com/aymankharouf" className="grey-text text-lighten-3">Github</a></li>
               </ul>
             </div>
           </div>

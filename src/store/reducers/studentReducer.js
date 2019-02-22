@@ -7,8 +7,11 @@ const studentReducer = (state = [], action) => {
       const newState = state.filter(id => id !== action.change.doc.id)
       return newState
     case 'REGISTER_ERROR':
-      console.log('register error', action.err)
-      break;
+      console.log('register error', action.message)
+      return {
+        ...state,
+        error: action.message
+      }
     default:
       return state
   }
