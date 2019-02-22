@@ -2,6 +2,7 @@ import React from 'react'
 import { register } from '../../store/actions/studentActions'
 import { connect } from 'react-redux'
 import Recaptcha from 'react-recaptcha'
+import M from 'materialize-css'
 
 class Register extends React.Component {
   state = {
@@ -13,7 +14,7 @@ class Register extends React.Component {
   }
   patterns = {
     name: /^[a-zA-Z]{3,20} [a-zA-Z]{3,20}$/,
-    mobile: /07[7-9][0-9]{7}$/,
+    mobile: /^07[7-9][0-9]{7}$/,
     email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
   }
   validate = (field, pattern) => {
@@ -31,6 +32,7 @@ class Register extends React.Component {
         && this.refs.recaptcha.className == 'valid') this.refs.submit.disabled = false
     else this.refs.submit.disabled = true
   }
+  
   RecaptchaLoaded = () => {
     console.log('the recaptcha is loaded')
   }
@@ -47,11 +49,21 @@ class Register extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.register(this.state)
+    this.refs.recaptcha.reset()
+    this.setState({
+      name: '',
+      email: '',
+      mobile: '07',
+      time: '',
+      note: ''
+    })
+    this.refs.form.reset()
+    M.toast({html: 'You have registered successfully!'})
   }
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit}>
+        <form ref="form" onSubmit={this.handleSubmit}>
           <div className="input-field">
             <i className="material-icons prefix">perm_identity</i>
             <input type="text" id="name" ref="name" className="validate" onChange={this.handleChange}></input>

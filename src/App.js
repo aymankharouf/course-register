@@ -4,7 +4,6 @@ import Navbar from './components/layout/Navbar'
 import Home from './components/layout/Home'
 import Dashboard from './components/dashboard/Dashboard'
 import StudentDetails from './components/students/StudentDetails'
-import Login from './components/auth/Login'
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
 
@@ -25,7 +24,6 @@ class App extends React.Component {
             <Route exact path='/' component={Home}/>
             <Route path='/dashboard' component={Dashboard}/>
             <Route path='/student/:id' component={StudentDetails}/> 
-            <Route path='/login' component={Login}/> 
           </Switch>
         </div>
       </BrowserRouter>

@@ -60,6 +60,7 @@ const Home = props => {
           </div>
         </div>
       </section>
+      
       <footer className="page-footer grey darken-3">
         <div className="container">
           <div className="row">
