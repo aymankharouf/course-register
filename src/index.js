@@ -8,6 +8,8 @@ import rootReducer from './store/reducers/rootReducer'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { db, auth } from './db/firebase'
+
+
 const store = createStore(rootReducer, applyMiddleware(thunk))
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
@@ -23,6 +25,20 @@ auth.onAuthStateChanged(user => {
             break
           case 'removed':
             store.dispatch({type: 'DELETE_NOTIFICATION', change})
+            break
+          default:
+            console.log('uncatched type')
+        }
+      })
+    }, err => console.log(err.message))
+    db.collection('students').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        switch (change.type) {
+          case 'added':
+            store.dispatch({type: 'REGISTER', change})
+            break
+          case 'removed':
+            store.dispatch({type: 'UNREGISTER', change})
             break
           default:
             console.log('uncatched type')

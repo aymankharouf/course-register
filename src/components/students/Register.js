@@ -9,7 +9,7 @@ class Register extends React.Component {
     name: '',
     email: '',
     mobile: '07',
-    time: '',
+    time: 4,
     note: ''
   }
   patterns = {
@@ -54,13 +54,14 @@ class Register extends React.Component {
       name: '',
       email: '',
       mobile: '07',
-      time: '',
+      time: 4,
       note: ''
     })
     this.refs.form.reset()
     M.toast({html: 'You have registered successfully!'})
   }
   render() {
+    const times = this.props.times.map(time => <option key={time.id} value={time.id}>{time.desc}</option>)
     return (
       <div className="container">
         <form ref="form" onSubmit={this.handleSubmit}>
@@ -84,14 +85,11 @@ class Register extends React.Component {
           </div>
           <div className="input-field">
             <i className="material-icons prefix">schedule</i>
-            <select id="time" defaultValue="" onChange={this.handleChange}>
-              <option value="" disabled>Preferred time (UTC+03:00 Mddile East)</option>
-              <option value="1">10 a.m - 12 p.m</option>
-              <option value="2">4 p.m - 6 p.m</option>
-              <option value="3">7 p.m - 9 p.m</option>
-              <option value="4">Any Time</option>
+            <select id="time" defaultValue="4" onChange={this.handleChange}>
+              {times}
             </select>
-            <label htmlFor="time">Preferred Time</label>
+            <label>Preferred Time</label>
+            <span className="helper-text">choose your preferred time (UTC+03:00 Mddile East)</span>
           </div>
           <div className="input-field">
             <i className="material-icons prefix">message</i>
@@ -118,7 +116,8 @@ class Register extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    error: state.student.error
+    error: state.student.error,
+    times: state.times
   }
 }
 const mapActionsToProps = dispatch => {
