@@ -8,20 +8,22 @@ class Register extends React.Component {
   state = {
     name: '',
     email: '',
-    mobile: '07',
-    time: 4,
+    mobile: '',
+    time: 1,
     note: ''
   }
   patterns = {
-    name: /^[a-zA-Z]{3,20} [a-zA-Z]{3,20}$/,
+    name: /^[a-zA-Z ]{3,50}$/,
     mobile: /^07[7-9][0-9]{7}$/,
     email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
   }
   validate = (field, pattern) => {
-    if (!pattern || pattern.test(field.value)){
-      field.className = 'valid'
-    } else {
-      field.className = 'invalid'
+    if (pattern) {
+      if (pattern.test(field.value)){
+        field.className = 'valid'
+      } else {
+        field.className = 'invalid'
+      }
     }
     this.isFormValid()
   }
@@ -53,8 +55,8 @@ class Register extends React.Component {
     this.setState({
       name: '',
       email: '',
-      mobile: '07',
-      time: 4,
+      mobile: '',
+      time: 1,
       note: ''
     })
     this.refs.form.reset()
@@ -68,28 +70,28 @@ class Register extends React.Component {
           <div className="input-field">
             <i className="material-icons prefix">perm_identity</i>
             <input type="text" id="name" ref="name" className="validate" onChange={this.handleChange}></input>
-            <span className="helper-text" data-error="wrong" data-success="right">your first and last name</span>
+            <span className="helper-text" data-error="wrong" data-success="right">first and last name</span>
             <label htmlFor="name">Your Name</label>
           </div>
           <div className="input-field">
             <i className="material-icons prefix">email</i>
             <input type="email" id="email" ref="email" className="validate" onChange={this.handleChange}></input>
-            <span className="helper-text" data-error="wrong" data-success="right">your valid email</span>
+            <span className="helper-text" data-error="wrong" data-success="right">write a valid email</span>
             <label htmlFor="email">Your email</label>
           </div>
           <div className="input-field">
             <i className="material-icons prefix">phone</i>
             <input type="text" id="mobile" ref="mobile" className="validate" value={this.state.mobile} onChange={this.handleChange}></input>
-            <span className="helper-text" data-error="wrong" data-success="right">you mobile number</span>
+            <span className="helper-text" data-error="wrong" data-success="right">a valid mobile number begins with 07</span>
             <label htmlFor="mobile">Your mobile</label>
           </div>
           <div className="input-field">
             <i className="material-icons prefix">schedule</i>
-            <select id="time" defaultValue="4" onChange={this.handleChange}>
+            <select id="time" defaultValue="1" onChange={this.handleChange}>
               {times}
             </select>
             <label>Preferred Time</label>
-            <span className="helper-text">choose your preferred time (UTC+03:00 Mddile East)</span>
+            <span className="helper-text">choose preferred time (GMT+02:00)</span>
           </div>
           <div className="input-field">
             <i className="material-icons prefix">message</i>

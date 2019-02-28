@@ -60,10 +60,10 @@ class Home extends React.Component {
         <section className="container section scrollspy" id="register">
           <div className="row">
             <div className="col s12 l5">
-              <h4 className="indigo-text text-darken-4">Register now with only (200 JOD) </h4>
+              <h4 className="indigo-text text-darken-4">Register now for only (200 JOD) </h4>
               <p>Make your first step towards new software development trends; and be sure you will have a bright future in the job market. </p>
-              <p>In this 20 hours course we will put you in the right direction among nowadays software development chaos.</p>
-              <p>Initially register your information and preferences, we will contanct you for the upcoming courses soon. </p>
+              <p>In this 20 hours course I will put you in the right direction among nowadays software development chaos.</p>
+              <p>Initially register your information and preferences, I will contanct you for the upcoming courses soon. </p>
             </div>
             <div className="col s12 l5 offset-l2">
               <Register />
@@ -77,14 +77,6 @@ class Home extends React.Component {
               <div className="col s12 l6">
                 <h5>About Me</h5>
                 <p> I am a software specialist with more than twenty years experience in building complex applications in verious business areas.</p>
-              </div>
-              <div className="col s12 l4 offset-l2">
-                <h5>Connect</h5>
-                <ul>
-                  <li><a href="https://www.linkedin.com/in/aymankharouf" className="grey-text text-lighten-3">LinkedIn</a></li>
-                  <li><a href="https://twitter.com/aymankharouf" className="grey-text text-lighten-3">Twitter</a></li>
-                  <li><a href="https://github.com/aymankharouf" className="grey-text text-lighten-3">Github</a></li>
-                </ul>
               </div>
             </div>
           </div>
